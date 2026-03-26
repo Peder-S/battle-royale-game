@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battle Royale</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Lobby Screen -->
+  <div id="lobby-screen">
+    <h1>BATTLE ROYALE</h1>
+    <p class="subtitle">Top-down multiplayer · Last one standing wins</p>
+    <div class="lobby-form">
+      <input id="name-input" type="text" placeholder="Enter your name" maxlength="16" autocomplete="off">
+      <button id="join-btn">JOIN GAME</button>
+    </div>
+    <div class="controls-hint">
+      <p>WASD — move &nbsp;|&nbsp; Mouse — aim &nbsp;|&nbsp; LMB — shoot &nbsp;|&nbsp; Shift — dash boost</p>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" style="display:none">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Spectating notice -->
+    <div id="overlay-spectate" class="overlay" style="display:none">
+      <div class="overlay-box">
+        <div class="overlay-title" style="color:#aaa">SPECTATING</div>
+        <div class="overlay-sub">Joining next round...</div>
+      </div>
+    </div>
+
+    <!-- Dead overlay -->
+    <div id="overlay-dead" class="overlay" style="display:none">
+      <div class="overlay-box">
+        <div class="overlay-title" style="color:#e74c3c">YOU DIED</div>
+        <div class="overlay-sub">Spectating until next round</div>
+      </div>
+    </div>
+
+    <!-- Round end overlay -->
+    <div id="overlay-winner" class="overlay" style="display:none">
+      <div class="overlay-box">
+        <div class="overlay-title" style="color:#f1c40f" id="winner-title">WINNER</div>
+        <div class="overlay-winner-name" id="winner-name"></div>
+        <div class="overlay-sub">New round in 5 seconds...</div>
+      </div>
+    </div>
+
+    <!-- Countdown overlay -->
+    <div id="overlay-countdown" class="overlay" style="display:none">
+      <div class="countdown-number" id="countdown-number">3</div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
