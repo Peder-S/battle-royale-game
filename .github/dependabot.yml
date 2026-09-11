@@ -1,0 +1,19 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # Express 5 is a breaking change. Upgrade deliberately, not automatically.
+      - dependency-name: express
+        update-types:
+          - version-update:semver-major
+
